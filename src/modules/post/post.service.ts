@@ -17,7 +17,9 @@ const getSinglePostFromDB = async (id: string) => {
 };
 
 const updatePostInDB = async (id: string, payload: Partial<IPost>) => {
-  const result = await Post.findByIdAndUpdate(id, payload, { new: true });
+  const result = await Post.findByIdAndUpdate(id, payload, {
+    returnDocument: 'after'
+  });
   return result;
 };
 
